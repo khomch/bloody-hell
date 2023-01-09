@@ -1,3 +1,2 @@
-export const removeSquareBrackets = (str: string) => {
-  return str.replace(/\[|\]/g, '');
-};
+const removeSquareBrackets = (str: string) => str.replace(/\[|\]/g, '');
+export default removeSquareBrackets;

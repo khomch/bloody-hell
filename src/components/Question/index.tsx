@@ -1,13 +1,13 @@
-import { TQuestion } from '../../types/types';
-import styles from './Question.module.sass';
 import React from 'react';
-import { removeSquareBrackets } from '../../utils/removeSquareBrackets';
+import styles from './Question.module.sass';
+import removeSquareBrackets from '../../utils/removeSquareBrackets';
+import { TQuestion } from '../../types/types';
 
-export const Question = (props: TQuestion) => {
+export default function Question({ definition }: TQuestion) {
   return (
     <div className={styles.phrase}>
-      <p>{removeSquareBrackets(props.definition)}</p>
-      <br/>
+      <p>{removeSquareBrackets(definition)}</p>
+      <br />
     </div>
   );
-};
+}

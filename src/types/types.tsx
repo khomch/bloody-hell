@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 
 export type TPhrasesList = {
   list: TPhrase[]
@@ -15,7 +15,6 @@ export type TPhrase = {
   thumbs_up: number;
   word: string;
   written_on: string
-  split(s: string): any;
 };
 
 export type TAnswer = {
@@ -27,4 +26,3 @@ export type TAnswer = {
 export type TQuestion = {
   definition: string;
 };
-

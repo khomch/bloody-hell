@@ -17,6 +17,7 @@ export default function MainPage() {
   const handleAnswerClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     const clickedPhrase = (phrasesToRender.find((el) => el.word === target.innerText));
+
     console.log(clickedPhrase && clickedPhrase.defid === phrasesToRender[randomPhrase].defid);
   };
 
@@ -45,6 +46,8 @@ export default function MainPage() {
                   word={phrase.word}
                   definition={phrase.definition}
                   key={phrase.defid}
+                  id={phrase.defid}
+                  rightAnswer={phrasesToRender[randomPhrase].defid}
                 />
               ))}
             </div>

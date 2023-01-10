@@ -21,6 +21,8 @@ export type TAnswer = {
   word: string;
   definition: string;
   onClick: (e: React.MouseEvent)=> void;
+  id: number;
+  rightAnswer: number;
 };
 
 export type TQuestion = {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type TPhrasesList = {
   list: TPhrase[]
 };
@@ -19,10 +17,7 @@ export type TPhrase = {
 
 export type TAnswer = {
   word: string;
-  definition: string;
-  onClick: (e: React.MouseEvent)=> void;
   id: number;
-  rightAnswer: number;
 };
 
 export type TQuestion = {

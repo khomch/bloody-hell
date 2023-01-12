@@ -1,4 +1,4 @@
-import DICTIONARY_API_URL from '../utils/constants';
+import { DICTIONARY_API_URL } from '../utils/constants';
 
 const phrasesAPI = () => fetch(DICTIONARY_API_URL, {
   method: 'GET',

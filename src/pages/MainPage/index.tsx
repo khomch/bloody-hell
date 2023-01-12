@@ -1,59 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { TPhrase } from '../../types/types';
+import { getData, changePhrase } from '../../store/slices/phrasesSlice';
+import { AppDispatch } from '../../store/store';
 import Answer from '../../components/Answer';
-import { TPhrase, TPhrasesList } from '../../types/types';
-import styles from '../../components/Answer/Answer.module.sass';
-import phrasesAPI from '../../api/phrasesAPI';
-import getRandomNumber from '../../utils/getRandomNumber';
 import Question from '../../components/Question';
 
 export default function MainPage() {
-  const renderAfterCalled = useRef(false);
-  const phrasesQty = 4;
-
-  const [phrases, setPhrases] = useState<TPhrasesList>({ list: [] });
-  const [randomPhrase, setRandomPhrase] = useState<number>(0);
-  const phrasesToRender: TPhrase[] = phrases.list.slice(0, phrasesQty);
-
-  const handleAnswerClick = (e: React.MouseEvent) => {
-    const target = e.target as HTMLElement;
-    const clickedPhrase = (phrasesToRender.find((el) => el.word === target.innerText));
-
-    console.log(clickedPhrase && clickedPhrase.defid === phrasesToRender[randomPhrase].defid);
+  const dispatch = useDispatch<AppDispatch>();
+  const start = useSelector((store: any) => store.phrases.start);
+  const data = useSelector((store: any) => store.phrases.list);
+  const answer = useSelector((store: any) => store.phrases.answer);
+  const isAnswered = useSelector((store: any) => store.phrases.isAnswered);
+  const handleQuestionChange = () => {
+    dispatch(changePhrase());
+    dispatch(getData());
   };
 
-  useEffect(() => {
-    if (!renderAfterCalled.current) {
-      phrasesAPI.then((res) => setPhrases(res));
-    }
-    setRandomPhrase(getRandomNumber(phrasesQty));
-
-    renderAfterCalled.current = true;
-  }, [phrasesToRender, phrases.list, renderAfterCalled]);
-
   return (
-    <div>
-      {
-        phrasesToRender.length > 0
-          ? (
-            <div className={styles.phrase}>
-
-              <Question definition={phrasesToRender[randomPhrase].definition} />
-
-              <br />
-              {phrasesToRender.map((phrase: TPhrase) => (
-                <Answer
-                  onClick={handleAnswerClick}
-                  word={phrase.word}
-                  definition={phrase.definition}
-                  key={phrase.defid}
-                  id={phrase.defid}
-                  rightAnswer={phrasesToRender[randomPhrase].defid}
-                />
-              ))}
-            </div>
-          )
-          : '...loading...'
-      }
-    </div>
+    start
+      ? (
+        <button
+          type="button"
+          onClick={() => dispatch(getData())}
+        >
+          START
+        </button>
+      )
+      : (
+        <div>
+          {
+      data.length > 0
+        ? (
+          <div>
+            <Question definition={answer.definition} />
+            <br />
+            {data.map((phrase: TPhrase) => (
+              <Answer
+                word={phrase.word}
+                key={phrase.defid}
+                id={phrase.defid}
+              />
+            ))}
+            {isAnswered
+              && (
+                <>
+                  <br />
+                  <button
+                    type="button"
+                    onClick={() => handleQuestionChange()}
+                  >
+                    NEXT
+                  </button>
+                </>
+              )}
+          </div>
+        )
+        : '...loading...'
+    }
+        </div>
+      )
   );
 }

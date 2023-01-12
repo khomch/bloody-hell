@@ -1,17 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { TPhrase } from '../../types/types';
 import { getData, changePhrase } from '../../store/slices/phrasesSlice';
-import { AppDispatch } from '../../store/store';
 import Answer from '../../components/Answer';
 import Question from '../../components/Question';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 export default function MainPage() {
-  const dispatch = useDispatch<AppDispatch>();
-  const start = useSelector((store: any) => store.phrases.start);
-  const data = useSelector((store: any) => store.phrases.list);
-  const answer = useSelector((store: any) => store.phrases.answer);
-  const isAnswered = useSelector((store: any) => store.phrases.isAnswered);
+  const dispatch = useAppDispatch();
+  const {
+    start, list, phrase, isAnswered, counter,
+  } = useAppSelector((store: any) => store.phrases);
+
   const handleQuestionChange = () => {
     dispatch(changePhrase());
     dispatch(getData());
@@ -30,18 +29,19 @@ export default function MainPage() {
       : (
         <div>
           {
-      data.length > 0
+      list.length > 0
         ? (
           <div>
-            <Question definition={answer.definition} />
+            <Question definition={phrase.definition} />
             <br />
-            {data.map((phrase: TPhrase) => (
+            {list.map((question: TPhrase) => (
               <Answer
-                word={phrase.word}
-                key={phrase.defid}
-                id={phrase.defid}
+                word={question.word}
+                key={question.defid}
+                id={question.defid}
               />
             ))}
+            <div>{counter}</div>
             {isAnswered
               && (
                 <>

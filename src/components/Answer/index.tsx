@@ -1,24 +1,25 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { TAnswer } from '../../types/types';
 import styles from './Answer.module.sass';
 import removeSquareBrackets from '../../utils/removeSquareBrackets';
 import { sendAnswer } from '../../store/slices/phrasesSlice';
-import { AppDispatch } from '../../store/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 function Answer({ word, id }: TAnswer) {
-  const dispatch = useDispatch<AppDispatch>();
-  const isAnswered = useSelector((store: any) => store.phrases.isAnswered);
-  const answer = useSelector((store: any) => store.phrases.answer);
+  const dispatch = useAppDispatch();
+  const {
+    phrase, isAnswered,
+  } = useAppSelector((state) => state.phrases);
 
   return (
     <div className={styles.answer}>
       <button
         className={
-        `${styles[isAnswered && answer.defid === id && 'right']}
-        ${styles[isAnswered && answer.defid !== id && 'wrong']}`
+        `${styles[(isAnswered && phrase!.defid === id) ? 'right' : '']}
+        ${styles[(isAnswered && phrase!.defid !== id) ? 'wrong' : '']}`
       }
         type="button"
+        disabled={isAnswered}
         onClick={() => dispatch(sendAnswer(id))}
       >
         { removeSquareBrackets(word) }

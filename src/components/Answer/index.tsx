@@ -9,16 +9,17 @@ function Answer({ word, id }: TAnswer) {
   const dispatch = useAppDispatch();
   const {
     phrase, isAnswered,
-  } = useAppSelector((store: any) => store.phrases);
+  } = useAppSelector((state) => state.phrases);
 
   return (
     <div className={styles.answer}>
       <button
         className={
-        `${styles[isAnswered && phrase.defid === id && 'right']}
-        ${styles[isAnswered && phrase.defid !== id && 'wrong']}`
+        `${styles[(isAnswered && phrase!.defid === id) ? 'right' : '']}
+        ${styles[(isAnswered && phrase!.defid !== id) ? 'wrong' : '']}`
       }
         type="button"
+        disabled={isAnswered}
         onClick={() => dispatch(sendAnswer(id))}
       >
         { removeSquareBrackets(word) }

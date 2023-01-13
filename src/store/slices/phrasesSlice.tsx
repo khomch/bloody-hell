@@ -1,37 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { DICTIONARY_API_URL, qtyOfPhrases } from '../../utils/constants';
-import getNumber from '../../utils/getNumber';
-import { TPhrase } from '../../types/types';
+import { TPhrasesState } from '../../types/types';
 
 export const getData = createAsyncThunk(
   'phrases/getData',
-  async () => {
-    const res = await fetch(DICTIONARY_API_URL, {
-      method: 'GET',
-    }).then(
-      (data) => data.json(),
-    );
-    return res;
-  },
+  async () => fetch(DICTIONARY_API_URL, {
+    method: 'GET',
+  }).then(
+    (data) => data.json(),
+  ),
 );
 
-type TState = {
-  start: boolean,
-  loading: boolean,
-  list: [],
-  usersAnswer: null | number,
-  phrase: null | TPhrase,
-  isAnswered: boolean,
-  isAnsweredRight: null | boolean,
-  answer: any,
-  counter: number,
-};
-
-const initialState: TState = {
+const initialState: TPhrasesState = {
   start: true,
   loading: false,
   list: [],
   usersAnswer: null,
+  phraseNumber: 0,
   phrase: null,
   isAnswered: false,
   isAnsweredRight: null as null | boolean,
@@ -43,11 +28,13 @@ export const phrasesSlice = createSlice({
   name: 'phrases',
   initialState,
   reducers: {
+    startGame: (state, action) => {
+      state.phraseNumber = action.payload;
+    },
     sendAnswer: (state, action) => {
       state.usersAnswer = action.payload;
       state.isAnswered = action.payload && true;
       state.isAnsweredRight = state.usersAnswer === state.phrase!.defid;
-      console.log(state.isAnsweredRight);
       state.counter = state.isAnsweredRight ? state.counter += 1 : state.counter -= 1;
     },
     changePhrase: (state) => {
@@ -56,6 +43,7 @@ export const phrasesSlice = createSlice({
       state.phrase = null;
       state.isAnswered = false;
       state.isAnsweredRight = null;
+      state.phraseNumber = 0;
     },
   },
   extraReducers: (builder) => {
@@ -66,9 +54,8 @@ export const phrasesSlice = createSlice({
       .addCase(getData.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.start = false;
-        const phrasesToRender = payload.list.slice(0, qtyOfPhrases);
-        state.list = phrasesToRender;
-        state.phrase = phrasesToRender[getNumber(qtyOfPhrases)];
+        state.list = payload.list.slice(0, qtyOfPhrases);
+        state.phrase = state.list[state.phraseNumber];
       })
       .addCase(getData.rejected, (state: any) => {
         state.loading = false;
@@ -76,6 +63,6 @@ export const phrasesSlice = createSlice({
   },
 });
 
-export const { sendAnswer, changePhrase } = phrasesSlice.actions;
+export const { startGame, sendAnswer, changePhrase } = phrasesSlice.actions;
 
 export default phrasesSlice.reducer;

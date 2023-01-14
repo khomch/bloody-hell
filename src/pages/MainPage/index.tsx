@@ -1,59 +1,87 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { TPhrase } from '../../types/types';
+import {
+  getData, changePhrase, startGame, startOver,
+} from '../../store/slices/phrasesSlice';
 import Answer from '../../components/Answer';
-import { TPhrase, TPhrasesList } from '../../types/types';
-import styles from '../../components/Answer/Answer.module.sass';
-import phrasesAPI from '../../api/phrasesAPI';
-import getRandomNumber from '../../utils/getRandomNumber';
 import Question from '../../components/Question';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import getNumber from '../../utils/getNumber';
+import { qtyOfPhrases } from '../../utils/constants';
 
 export default function MainPage() {
-  const renderAfterCalled = useRef(false);
-  const phrasesQty = 4;
-
-  const [phrases, setPhrases] = useState<TPhrasesList>({ list: [] });
-  const [randomPhrase, setRandomPhrase] = useState<number>(0);
-  const phrasesToRender: TPhrase[] = phrases.list.slice(0, phrasesQty);
-
-  const handleAnswerClick = (e: React.MouseEvent) => {
-    const target = e.target as HTMLElement;
-    const clickedPhrase = (phrasesToRender.find((el) => el.word === target.innerText));
-
-    console.log(clickedPhrase && clickedPhrase.defid === phrasesToRender[randomPhrase].defid);
+  const dispatch = useAppDispatch();
+  const {
+    start, list, phrase, isAnswered, counter, lives, gameOver,
+  } = useAppSelector((state) => state.phrases);
+  const handleStart = () => {
+    dispatch(startGame(getNumber(qtyOfPhrases)));
+    dispatch(getData());
+  };
+  const handleQuestionChange = () => {
+    dispatch(changePhrase());
+    dispatch(startGame(getNumber(qtyOfPhrases)));
+    dispatch(getData());
   };
 
-  useEffect(() => {
-    if (!renderAfterCalled.current) {
-      phrasesAPI.then((res) => setPhrases(res));
-    }
-    setRandomPhrase(getRandomNumber(phrasesQty));
-
-    renderAfterCalled.current = true;
-  }, [phrasesToRender, phrases.list, renderAfterCalled]);
+  const handleGameOver = () => {
+    dispatch(startOver());
+    dispatch(startGame(getNumber(qtyOfPhrases)));
+    dispatch(getData());
+  };
 
   return (
-    <div>
-      {
-        phrasesToRender.length > 0
-          ? (
-            <div className={styles.phrase}>
-
-              <Question definition={phrasesToRender[randomPhrase].definition} />
-
-              <br />
-              {phrasesToRender.map((phrase: TPhrase) => (
-                <Answer
-                  onClick={handleAnswerClick}
-                  word={phrase.word}
-                  definition={phrase.definition}
-                  key={phrase.defid}
-                  id={phrase.defid}
-                  rightAnswer={phrasesToRender[randomPhrase].defid}
-                />
-              ))}
-            </div>
-          )
-          : '...loading...'
-      }
-    </div>
+    start
+      ? (
+        <button
+          type="button"
+          onClick={() => handleStart()}
+        >
+          START
+        </button>
+      )
+      : (
+        <div>
+          {
+      phrase
+        ? (
+          <div>
+            <Question definition={phrase.definition} />
+            <br />
+            {list.map((question: TPhrase) => (
+              <Answer
+                word={question.word}
+                key={question.defid}
+                id={question.defid}
+              />
+            ))}
+            <div>{counter}</div>
+            <div>{lives}</div>
+            {gameOver && (
+            <button
+              type="button"
+              onClick={() => handleGameOver()}
+            >
+              GAME OVER
+            </button>
+            )}
+            {isAnswered && !gameOver
+              && (
+                <>
+                  <br />
+                  <button
+                    type="button"
+                    onClick={() => handleQuestionChange()}
+                  >
+                    NEXT
+                  </button>
+                </>
+              )}
+          </div>
+        )
+        : '...loading...'
+    }
+        </div>
+      )
   );
 }

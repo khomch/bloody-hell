@@ -1,9 +1,3 @@
-import React from 'react';
-
-export type TPhrasesList = {
-  list: TPhrase[]
-};
-
 export type TPhrase = {
   author: string;
   current_vote: string;
@@ -19,12 +13,24 @@ export type TPhrase = {
 
 export type TAnswer = {
   word: string;
-  definition: string;
-  onClick: (e: React.MouseEvent)=> void;
   id: number;
-  rightAnswer: number;
 };
 
 export type TQuestion = {
   definition: string;
+};
+
+export type TPhrasesState = {
+  start: boolean,
+  loading: boolean,
+  list: [],
+  phraseNumber: number,
+  usersAnswer: null | number,
+  phrase: null | TPhrase,
+  isAnswered: boolean,
+  isAnsweredRight: null | boolean,
+  answer: any,
+  counter: number,
+  lives: string[],
+  gameOver: boolean,
 };

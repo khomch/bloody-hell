@@ -22,6 +22,8 @@ const initialState: TPhrasesState = {
   isAnsweredRight: null as null | boolean,
   answer: null,
   counter: 0,
+  lives: ['1', '2', '3'],
+  gameOver: false,
 };
 
 export const phrasesSlice = createSlice({
@@ -35,16 +37,19 @@ export const phrasesSlice = createSlice({
       state.usersAnswer = action.payload;
       state.isAnswered = action.payload && true;
       state.isAnsweredRight = state.usersAnswer === state.phrase!.defid;
-      state.counter = state.isAnsweredRight ? state.counter += 1 : state.counter -= 1;
+      state.counter = state.isAnsweredRight ? state.counter += 1 : state.counter;
+      state.lives = (!state.isAnsweredRight && state.lives.pop()) ? state.lives : state.lives;
+      state.gameOver = state.lives.length === 0;
     },
     changePhrase: (state) => {
-      state.usersAnswer = null;
-      state.list = [];
-      state.phrase = null;
-      state.isAnswered = false;
-      state.isAnsweredRight = null;
-      state.phraseNumber = 0;
+      state.usersAnswer = initialState.usersAnswer;
+      state.list = initialState.list;
+      state.phrase = initialState.phrase;
+      state.isAnswered = initialState.isAnswered;
+      state.isAnsweredRight = initialState.isAnsweredRight;
+      state.phraseNumber = initialState.phraseNumber;
     },
+    startOver: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -63,6 +68,8 @@ export const phrasesSlice = createSlice({
   },
 });
 
-export const { startGame, sendAnswer, changePhrase } = phrasesSlice.actions;
+export const {
+  startGame, sendAnswer, changePhrase, startOver,
+} = phrasesSlice.actions;
 
 export default phrasesSlice.reducer;

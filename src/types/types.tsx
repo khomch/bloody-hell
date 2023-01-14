@@ -31,4 +31,6 @@ export type TPhrasesState = {
   isAnsweredRight: null | boolean,
   answer: any,
   counter: number,
+  lives: string[],
+  gameOver: boolean,
 };

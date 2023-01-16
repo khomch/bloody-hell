@@ -8,6 +8,7 @@ import Question from '../../components/Question';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import getNumber from '../../utils/getNumber';
 import { qtyOfPhrases } from '../../utils/constants';
+import styles from './MainPage.module.sass';
 
 export default function MainPage() {
   const dispatch = useAppDispatch();
@@ -45,7 +46,7 @@ export default function MainPage() {
           {
       phrase
         ? (
-          <div>
+          <div className={styles.MainPage}>
             <Question definition={phrase.definition} />
             <br />
             {list.map((question: TPhrase) => (

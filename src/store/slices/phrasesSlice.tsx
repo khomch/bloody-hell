@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { DICTIONARY_API_URL, qtyOfPhrases } from '../../utils/constants';
+import {
+  DICTIONARY_API_URL, hearts, qtyOfPhrases,
+} from '../../utils/constants';
 import { TPhrasesState } from '../../types/types';
 
 export const getData = createAsyncThunk(
@@ -8,11 +10,10 @@ export const getData = createAsyncThunk(
     method: 'GET',
   }).then(
     (data) => data.json(),
-  ),
+  ).catch((e) => console.error('Error in fetching data:', e)),
 );
 
 const initialState: TPhrasesState = {
-  start: true,
   loading: false,
   list: [],
   usersAnswer: null,
@@ -22,7 +23,7 @@ const initialState: TPhrasesState = {
   isAnsweredRight: null as null | boolean,
   answer: null,
   counter: 0,
-  lives: ['1', '2', '3'],
+  lives: hearts,
   gameOver: false,
 };
 
@@ -58,11 +59,12 @@ export const phrasesSlice = createSlice({
       })
       .addCase(getData.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.start = false;
         state.list = payload.list.slice(0, qtyOfPhrases);
         state.phrase = state.list[state.phraseNumber];
       })
       .addCase(getData.rejected, (state: any) => {
+        console.log('we are here');
+        console.log(state.loading);
         state.loading = false;
       });
   },

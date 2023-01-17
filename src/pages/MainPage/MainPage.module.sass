@@ -1,0 +1,83 @@
+@use '../../styles/variables/colors'
+@use '../../styles/variables/font-sizes'
+
+.MainPage
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 600px
+  max-width: 1110px
+  width: calc(100% - 20px*2)
+  margin-top: 80px
+  background-color: colors.$secondary
+  border-radius: 50px
+  border: 10px solid colors.$white
+  overflow: hidden
+  height: 100%
+
+.gameWindow
+  display: flex
+  width: 100%
+  height: 600px
+
+.gameWindow__interface
+  display: flex
+  width: 100%
+
+.gameWindow__phrases
+  display: flex
+  flex-direction: column
+  max-width: calc(100% - 380px)
+  min-width: 300px
+  width: 100%
+  justify-content: flex-start
+  margin-left: 55px
+
+
+.gameWindow__answers
+  display: flex
+  flex-wrap: wrap
+  max-width: 600px
+  justify-content: space-between
+
+.gameWindow__nextButton
+  display: flex
+  max-width: 600px
+  justify-self: flex-start
+  justify-content: center
+  width: 100%
+  margin-top: 40px
+
+.gameWindow__stats
+  display: flex
+  flex-direction: column
+  background-color: colors.$accent
+  max-width: 380px
+  width: 100%
+  height: 100%
+  align-self: flex-end
+
+.gameWindow__points
+  color: colors.$white
+  display: flex
+  font-family: "Inconsolata", Arial, sans-serif
+  font-weight: bold
+  font-size: font-sizes.$points
+  align-self: center
+  margin-top: 50px
+
+
+.gameWindow__lives
+  display: flex
+  margin-top: 60px
+  justify-content: center
+
+.gameWindow__loading
+  display: flex
+  flex-direction: column
+  max-width: calc(100% - 380px)
+  min-width: 300px
+  width: 100%
+  justify-content: center
+  text-align: center
+  margin-left: 55px

@@ -4,6 +4,7 @@ import styles from './Answer.module.sass';
 import removeSquareBrackets from '../../utils/removeSquareBrackets';
 import { sendAnswer } from '../../store/slices/phrasesSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import Button from '../UI/Button/Button';
 
 function Answer({ word, id }: TAnswer) {
   const dispatch = useAppDispatch();
@@ -13,17 +14,17 @@ function Answer({ word, id }: TAnswer) {
 
   return (
     <div className={styles.answer}>
-      <button
-        className={
-        `${styles[(isAnswered && phrase!.defid === id) ? 'right' : '']}
-        ${styles[(isAnswered && phrase!.defid !== id) ? 'wrong' : '']}`
-      }
+      <Button
+        size="medium"
+        variant="answer"
+        isRight={(isAnswered && phrase!.defid === id)}
+        isWrong={(isAnswered && phrase!.defid !== id)}
+        id="button-start"
         type="button"
+        value={removeSquareBrackets(word)}
         disabled={isAnswered}
         onClick={() => dispatch(sendAnswer(id))}
-      >
-        { removeSquareBrackets(word) }
-      </button>
+      />
       <br />
     </div>
   );

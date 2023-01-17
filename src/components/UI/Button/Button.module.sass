@@ -1,0 +1,53 @@
+@use '../../../styles/fonts/fonts'
+@use '../../../styles/variables/colors'
+@use '../../../styles/variables/font-sizes'
+
+.button
+  font-family: "Inconsolata", Arial, sans-serif
+  font-size: font-sizes.$button
+  box-shadow: 4px 4px 0 colors.$primary
+  border: 1px solid colors.$primary
+  border-radius: 4px
+  transition: 0.2s ease-in-out
+  color: colors.$primary
+
+
+.button:hover
+  cursor: pointer
+  transition: 0.2s ease-in-out
+  box-shadow: 10px 10px 0 colors.$primary
+
+.button_primary
+  background-color: colors.$white
+
+.button_answer
+  margin-top: 20px
+  background-color: colors.$white
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+.button_small
+  width: 160px
+  height: 60px
+
+.button_medium
+  width: 280px
+  height: 60px
+
+.button_large
+  width: 635px
+  height: 80px
+  font-size: font-sizes.$buttonLarge
+
+.button_right
+  background-color: colors.$accent
+  color: colors.$white
+
+.button_wrong
+  box-shadow: 4px 4px 0 colors.$primary
+  background-color: colors.$wrong
+
+.button_answer:disabled
+  box-shadow: 4px 4px 0 colors.$primary
+  cursor: auto

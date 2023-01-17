@@ -6,8 +6,7 @@ import { TQuestion } from '../../types/types';
 export default function Question({ definition }: TQuestion) {
   return (
     <div className={styles.phrase}>
-      <p>{removeSquareBrackets(definition)}</p>
-      <br />
+      <p className={styles.phrase__definition}>{removeSquareBrackets(definition)}</p>
     </div>
   );
 }

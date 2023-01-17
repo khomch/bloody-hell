@@ -4,10 +4,12 @@ import { Provider } from 'react-redux';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store/store';
+import './index.sass';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+document.body.classList.add('mystyle');
 
 root.render(
   <React.StrictMode>

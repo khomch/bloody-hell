@@ -21,7 +21,6 @@ export type TQuestion = {
 };
 
 export type TPhrasesState = {
-  start: boolean,
   loading: boolean,
   list: [],
   phraseNumber: number,
@@ -31,6 +30,6 @@ export type TPhrasesState = {
   isAnsweredRight: null | boolean,
   answer: any,
   counter: number,
-  lives: string[],
+  lives: {id: number}[],
   gameOver: boolean,
 };

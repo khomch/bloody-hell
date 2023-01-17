@@ -12,6 +12,8 @@ import styles from './MainPage.module.sass';
 import Button from '../../components/UI/Button/Button';
 import Heart from '../../components/Heart';
 import Smile from '../../components/Smile';
+import GameOver from '../../components/GameOver';
+import Loader from '../../components/Loader';
 
 export default function MainPage() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -56,7 +58,13 @@ export default function MainPage() {
               { phrase
                 ? (
                   <div className={styles.gameWindow__phrases}>
-                    <Question definition={phrase.definition} />
+
+                    <div className={styles.gameWindow__phrase}>
+                      { !gameOver
+                        ? <Question definition={phrase.definition} />
+                        : <GameOver /> }
+                    </div>
+
                     <div className={styles.gameWindow__answers}>
                       {list.map((question: TPhrase) => (
                         <Answer
@@ -66,6 +74,7 @@ export default function MainPage() {
                         />
                       ))}
                     </div>
+
                     {gameOver && (
                     <div className={styles.gameWindow__nextButton}>
                       <Button
@@ -78,6 +87,7 @@ export default function MainPage() {
                       />
                     </div>
                     )}
+
                     {isAnswered && !gameOver
                     && (
                     <div className={styles.gameWindow__nextButton}>
@@ -91,13 +101,15 @@ export default function MainPage() {
                       />
                     </div>
                     )}
+
                   </div>
                 )
                 : (
                   <div className={styles.gameWindow__loading}>
-                    ...loading...
+                    <Loader />
                   </div>
                 )}
+
               <div className={styles.gameWindow__stats}>
                 <div className={styles.gameWindow__points}>{`Points: ${counter}`}</div>
                 <div className={styles.gameWindow__lives}><Smile /></div>
@@ -107,6 +119,7 @@ export default function MainPage() {
                 }
                 </div>
               </div>
+
             </div>
 
           </section>

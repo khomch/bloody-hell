@@ -13,6 +13,7 @@ import Button from '../../components/UI/Button/Button';
 import Heart from '../../components/Heart';
 import Smile from '../../components/Smile';
 import GameOver from '../../components/GameOver';
+import Loader from '../../components/Loader';
 
 export default function MainPage() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -105,7 +106,7 @@ export default function MainPage() {
                 )
                 : (
                   <div className={styles.gameWindow__loading}>
-                    ...loading...
+                    <Loader />
                   </div>
                 )}
 

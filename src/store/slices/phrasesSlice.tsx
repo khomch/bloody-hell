@@ -63,8 +63,6 @@ export const phrasesSlice = createSlice({
         state.phrase = state.list[state.phraseNumber];
       })
       .addCase(getData.rejected, (state: any) => {
-        console.log('we are here');
-        console.log(state.loading);
         state.loading = false;
       });
   },

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bloody-hell/static/css/main.951241f9.css",
+    "main.js": "/bloody-hell/static/js/main.039698ef.js",
+    "static/js/787.b056568a.chunk.js": "/bloody-hell/static/js/787.b056568a.chunk.js",
+    "static/media/Inconsolata-Bold.ttf": "/bloody-hell/static/media/Inconsolata-Bold.37f99d4808fcd34262c5.ttf",
+    "static/media/Inconsolata-Regular.ttf": "/bloody-hell/static/media/Inconsolata-Regular.54748073d423bc6646f7.ttf",
+    "index.html": "/bloody-hell/index.html",
+    "static/media/heart.svg": "/bloody-hell/static/media/heart.500203046aaec453f55706dd050a2763.svg",
+    "static/media/loader.svg": "/bloody-hell/static/media/loader.96a06ef9976d0bf672aa5cc2a1e62880.svg",
+    "static/media/smile_3.svg": "/bloody-hell/static/media/smile_3.49b23c61bf78d8e4f3ba83e3a35946e3.svg",
+    "static/media/smile_4.svg": "/bloody-hell/static/media/smile_4.fb76e4e98d14224f54b47f101192bd76.svg",
+    "static/media/smile_1.svg": "/bloody-hell/static/media/smile_1.7b2142ab9947b786b1bf9ba16da178cd.svg",
+    "static/media/smile_2.svg": "/bloody-hell/static/media/smile_2.8126b7fc6b336fb55497dba672d4c8d2.svg",
+    "main.951241f9.css.map": "/bloody-hell/static/css/main.951241f9.css.map",
+    "main.039698ef.js.map": "/bloody-hell/static/js/main.039698ef.js.map",
+    "787.b056568a.chunk.js.map": "/bloody-hell/static/js/787.b056568a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.951241f9.css",
+    "static/js/main.039698ef.js"
+  ]
+}

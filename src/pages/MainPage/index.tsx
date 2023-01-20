@@ -23,14 +23,16 @@ export default function MainPage() {
     <div className={styles.MainPage}>
       {!isGameStarted
         ? (
-          <Button
-            size="large"
-            variant="primary"
-            id="button-start"
-            type="button"
-            value="START"
-            onClick={() => handleStart()}
-          />
+          <div className={styles.MainPage__startButton}>
+            <Button
+              size="large"
+              variant="primary"
+              id="button-start"
+              type="button"
+              value="START"
+              onClick={() => handleStart()}
+            />
+          </div>
         )
         : (
           <section className={styles.gameWindow}>

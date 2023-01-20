@@ -1,5 +1,6 @@
 @use '../../styles/variables/colors'
 @use '../../styles/variables/font-sizes'
+@use '../../styles/variables/breakpoints'
 
 .MainPage
   display: flex
@@ -92,3 +93,59 @@
   justify-content: center
   text-align: center
   margin-left: 55px
+
+
+@media (max-width: breakpoints.$mobile)
+  .MainPage
+    max-width: 320px
+    width: calc(100% - 10px*2)
+    margin-top: 20px
+    overflow: scroll
+    align-items: flex-start
+
+  .MainPage__startButton
+    align-self: center
+
+  .gameWindow
+    overflow: scroll
+    height: 100%
+
+  .gameWindow__interface
+    flex-direction: column-reverse
+
+  .gameWindow__stats
+    display: flex
+    height: 50px
+    overflow: hidden
+    flex-direction: row
+    flex-wrap: wrap
+    align-content: center
+    justify-content: flex-start
+    width: 100%
+
+  .gameWindow__points
+    font-size: font-sizes.$points-small
+    align-self: center
+    margin-top: 0
+    margin-left: 30px
+    justify-self: flex-start
+
+  .gameWindow__lives
+    margin-top: 0
+    margin-left: 30px
+    justify-self: center
+
+  .gameWindow__phrase
+    margin-top: 20px
+    width: 280px
+    align-self: center
+    max-width: 800px
+    height: 200px
+
+  .gameWindow__phrases
+    margin-top: 20px
+    margin-left: 10px
+
+  .gameWindow__answers
+    justify-content: center
+    margin: 5px

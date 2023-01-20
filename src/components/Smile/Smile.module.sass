@@ -1,1 +1,10 @@
+@use '../../styles/variables/breakpoints'
+
 .smile
+  height: 200px
+  width: 200px
+
+@media (max-width: breakpoints.$mobile)
+  .smile
+    height: 20px
+    width: 20px

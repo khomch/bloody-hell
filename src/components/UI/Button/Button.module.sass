@@ -1,6 +1,7 @@
 @use '../../../styles/fonts/fonts'
 @use '../../../styles/variables/colors'
 @use '../../../styles/variables/font-sizes'
+@use '../../../styles/variables/breakpoints'
 
 .button
   font-family: "Inconsolata", Arial, sans-serif
@@ -51,3 +52,13 @@
 .button_answer:disabled
   box-shadow: 4px 4px 0 colors.$primary
   cursor: auto
+
+@media (max-width: breakpoints.$mobile)
+  .button_answer
+    margin-top: 10px
+
+  .button_medium
+    height: 45px
+
+  .button_large
+    width: 280px

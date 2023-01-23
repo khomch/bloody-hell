@@ -1,8 +1,9 @@
-# BLOODY GELL
+# BLOODY HELL
 
 [Pet project](https://khomch.github.io/bloody-hell/) based on the _Who Wants to Be a Millionaire?_ idea, but developed on phrases from [Urban Dictionary](https://www.urbandictionary.com/).
 
-![](../../../../var/folders/y3/sf1lzlwx2cvcdgld4hln7cw40000gn/T/TemporaryItems/NSIRD_screencaptureui_eiHU3G/Screenshot 2023-01-23 at 14.20.31.png)
+<img width="1624" alt="Screenshot 2023-01-23 at 14 22 06" src="https://user-images.githubusercontent.com/65286114/214063061-01bebb0b-3cb9-45c0-841d-3153285064f6.png">
+
 
 ## How to play?
 

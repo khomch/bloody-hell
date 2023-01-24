@@ -15,7 +15,9 @@ Play here: [BLOODY-HELL](https://khomch.github.io/bloody-hell/)
 - React
 - Typescript
 - Redux
+- Redux-Toolkit
 - Sass
+- JEST
 - Eslint
 
 ### How to install?

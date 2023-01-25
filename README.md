@@ -11,6 +11,11 @@ Just choose one of four words describing suggested phrase and get as many points
 
 Play here: [BLOODY-HELL](https://khomch.github.io/bloody-hell/)
 
+## DISCLAMER
+All the phrases this Application uses are user-generated and fetched automatically from UrbanDictionary.com.
+
+Author of the Application does not and cannot review all content published to the UrbanDictionary.com (which API is used to get phrases) or created by users accessing the UrbanDictionary.com, and is not in any manner responsible for the content or the activities of any users of UrbanDictionary.com.
+
 ## Technologies:
 - React
 - Typescript

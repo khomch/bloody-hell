@@ -2,7 +2,7 @@
 @use '../../styles/variables/font-sizes'
 @use '../../styles/variables/breakpoints'
 
-.MainPage
+.wrapper
   display: flex
   align-items: center
   justify-content: center
@@ -96,14 +96,14 @@
 
 
 @media (max-width: breakpoints.$mobile)
-  .MainPage
+  .wrapper
     max-width: 320px
     width: calc(100% - 10px*2)
     margin-top: 20px
     overflow: scroll
     align-items: flex-start
 
-  .MainPage__startButton
+  .startButton
     align-self: center
 
   .gameWindow

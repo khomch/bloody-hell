@@ -3,8 +3,8 @@ import styles from './GameOver.module.sass';
 
 export default function GameOver() {
   return (
-    <div className={styles.GameOver}>
+    <p className={styles.text}>
       GAME OVER
-    </div>
+    </p>
   );
 }

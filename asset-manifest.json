@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bloody-hell/static/css/main.ac9c4414.css",
-    "main.js": "/bloody-hell/static/js/main.bd1d6906.js",
+    "main.css": "/bloody-hell/static/css/main.236ed8f8.css",
+    "main.js": "/bloody-hell/static/js/main.f6441e2b.js",
     "static/js/787.b056568a.chunk.js": "/bloody-hell/static/js/787.b056568a.chunk.js",
     "static/media/Inconsolata-Bold.ttf": "/bloody-hell/static/media/Inconsolata-Bold.37f99d4808fcd34262c5.ttf",
     "static/media/Inconsolata-Regular.ttf": "/bloody-hell/static/media/Inconsolata-Regular.54748073d423bc6646f7.ttf",
@@ -12,12 +12,12 @@
     "static/media/smile_4.svg": "/bloody-hell/static/media/smile_4.fb76e4e98d14224f54b47f101192bd76.svg",
     "static/media/smile_1.svg": "/bloody-hell/static/media/smile_1.7b2142ab9947b786b1bf9ba16da178cd.svg",
     "static/media/smile_2.svg": "/bloody-hell/static/media/smile_2.8126b7fc6b336fb55497dba672d4c8d2.svg",
-    "main.ac9c4414.css.map": "/bloody-hell/static/css/main.ac9c4414.css.map",
-    "main.bd1d6906.js.map": "/bloody-hell/static/js/main.bd1d6906.js.map",
+    "main.236ed8f8.css.map": "/bloody-hell/static/css/main.236ed8f8.css.map",
+    "main.f6441e2b.js.map": "/bloody-hell/static/js/main.f6441e2b.js.map",
     "787.b056568a.chunk.js.map": "/bloody-hell/static/js/787.b056568a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac9c4414.css",
-    "static/js/main.bd1d6906.js"
+    "static/css/main.236ed8f8.css",
+    "static/js/main.f6441e2b.js"
   ]
 }

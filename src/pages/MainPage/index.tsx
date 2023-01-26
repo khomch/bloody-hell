@@ -20,10 +20,10 @@ export default function MainPage() {
   };
 
   return (
-    <div className={styles.MainPage}>
+    <div className={styles.wrapper}>
       {!isGameStarted
         ? (
-          <div className={styles.MainPage__startButton}>
+          <div className={styles.startButton}>
             <Button
               size="large"
               variant="primary"

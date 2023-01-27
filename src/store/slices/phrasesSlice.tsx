@@ -13,7 +13,7 @@ export const getData = createAsyncThunk(
   ).catch((e) => console.error('Error in fetching data:', e)),
 );
 
-const initialState: TPhrasesState = {
+export const initialState: TPhrasesState = {
   loading: false,
   list: [],
   usersAnswer: null,

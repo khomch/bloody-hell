@@ -1,6 +1,6 @@
 # BLOODY HELL
 
-[Pet project](https://khomch.github.io/bloody-hell/) based on the _Who Wants to Be a Millionaire?_ idea, but developed on phrases from [Urban Dictionary](https://www.urbandictionary.com/).
+[Pet project](https://khomch.github.io/bloody-hell/) based on matching slang expressions to definitions from [Urban Dictionary](https://www.urbandictionary.com/)![image](https://user-images.githubusercontent.com/65286114/222438403-aa73101a-bfa0-4b26-a65f-fd524d0cce48.png)
 
 <img width="1624" alt="Screenshot 2023-01-23 at 14 22 06" src="https://user-images.githubusercontent.com/65286114/214063061-01bebb0b-3cb9-45c0-841d-3153285064f6.png">
 
